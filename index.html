@@ -9,7 +9,8 @@
     <title>Youssif Waleed | Software Engineer, AI & Robotics</title>
 
     <meta name="author" content="Youssif Waleed Hassan">
-    <meta name="description" content="Explore Youssif Waleed's portfolio featuring software engineering, full-stack web development, artificial intelligence, machine learning, computer vision, and robotics projects.">
+    <meta name="description"
+        content="Explore Youssif Waleed's portfolio featuring software engineering, full-stack web development, artificial intelligence, machine learning, computer vision, and robotics projects.">
 
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0a">
@@ -17,14 +18,15 @@
     <link rel="canonical" href="https://yw-portfolio-five.vercel.app/">
 
     <!-- Website Icon -->
-    <link rel="icon" type="image/png" href="./1.png">
-    <link rel="apple-touch-icon" href="./1.png">
+    <link rel="icon" type="image/png" href="./assets/1.png">
+    <link rel="apple-touch-icon" href="./assets/1.png">
 
     <!-- Open Graph: Link Preview -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Youssif Waleed">
     <meta property="og:title" content="Youssif Waleed | Software Engineer, AI & Robotics">
-    <meta property="og:description" content="Full-stack development, AI, machine learning, computer vision, and robotics. Explore my projects and work.">
+    <meta property="og:description"
+        content="Full-stack development, AI, machine learning, computer vision, and robotics. Explore my projects and work.">
     <meta property="og:url" content="https://yw-portfolio-five.vercel.app/">
     <meta property="og:image" content="https://yw-portfolio-five.vercel.app/og.png">
     <meta property="og:image:secure_url" content="https://yw-portfolio-five.vercel.app/og.png">
@@ -41,13 +43,8 @@
     <meta name="twitter:image:alt" content="Youssif Waleed — Software Engineer, AI & Robotics">
 
     <!-- Fonts -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com">
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
@@ -70,6 +67,7 @@
             --bg2: #1c0a0d;
             --body: #b9bec4;
             --logof: none;
+            --logof2: none;
             --d: 'Archivo Black', 'Impact', sans-serif;
             --b: 'Inter', system-ui, sans-serif;
             --m: 'JetBrains Mono', ui-monospace, monospace;
@@ -176,6 +174,11 @@
 
         nav a.logo-link:hover .nav-logo {
             transform: scale(1.08);
+        }
+
+        /* Keep the logo white when its navbar link is active in light mode */
+        :root[data-theme="light"] nav a.logo-link:is(.on, :hover) .nav-logo {
+            filter: none;
         }
 
         #prog {
@@ -307,71 +310,168 @@
         }
 
         .list {
-            border-top: 1px solid var(--line)
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 14px;
+            border: 0;
         }
 
         .row {
-            display: grid;
-            grid-template-columns: 60px 1fr auto;
-            gap: 14px;
-            align-items: center;
-            padding: 28px 0;
-            border-bottom: 1px solid var(--line);
+            grid-column: span 4;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            padding: 0 0 22px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--s1);
             text-decoration: none;
-            transition: padding .4s var(--e), background .4s
+            transition: transform .35s var(--e), border-color .35s, background .35s;
+        }
+
+        .row:first-child,
+        .row:nth-child(2) {
+            grid-column: span 6;
         }
 
         .row:hover {
-            padding-left: 18px;
-            background: linear-gradient(90deg, var(--acca), transparent)
+            transform: translateY(-5px);
+            border-color: var(--acc);
+            background: var(--s1);
         }
 
-        .row b {
-            font: clamp(1.4rem, 4.5vw, 3.2rem)/1 var(--d);
-            font-weight: 400
+        .row .cover {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--s2);
+            border-bottom: 1px solid var(--line);
         }
 
-        .row em {
-            font: 12px var(--m);
-            color: var(--mut);
-            font-style: normal;
-            text-align: right
+        .row .cover img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .65s var(--e);
+        }
+
+        .row:hover .cover img {
+            transform: scale(1.035);
         }
 
         .row .n {
-            font: 12px var(--m);
-            color: var(--acc)
+            position: absolute;
+            left: 13px;
+            top: 12px;
+            padding: 5px 8px;
+            border-radius: 99px;
+            background: var(--bg);
+            color: var(--acc);
+            font: 11px var(--m);
+        }
+
+        .row .meta {
+            padding: 2px 18px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .row b {
+            font: clamp(1.25rem, 2.4vw, 2rem)/1.1 var(--d);
+            font-weight: 400;
+        }
+
+        .row em {
+            font: 10px var(--m);
+            color: var(--mut);
+            font-style: normal;
         }
 
         .row p {
-            grid-column: 2;
             color: var(--mut);
-            font-size: 14px;
-            max-width: 60ch
+            font-size: 13px;
+            line-height: 1.65;
+            margin: 0;
         }
+
+        .row .open-project {
+            color: var(--acc);
+            font: 11px var(--m);
+            margin-top: 3px;
+        }
+
+        @media (max-width: 900px) {
+
+            .row,
+            .row:first-child,
+            .row:nth-child(2) {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .list {
+                grid-template-columns: 1fr;
+            }
+
+            .row,
+            .row:first-child,
+            .row:nth-child(2) {
+                grid-column: 1;
+            }
+        }
+
+
+
+
+
+
+
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1px;
             background: var(--line);
-            border: 1px solid var(--line)
+            border: 1px solid var(--line);
         }
 
         .grid>div {
+            min-width: 0;
             background: var(--s1);
-            padding: 26px
+            padding: clamp(18px, 2.2vw, 30px);
         }
 
         .grid h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px
+            font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+            line-height: 1.15;
+            margin-bottom: 12px;
         }
 
         .grid li {
             list-style: none;
             font: 13px/2 var(--m);
-            color: var(--mut)
+            color: var(--mut);
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .big {
@@ -615,6 +715,40 @@
             padding: 10px
         }
 
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 24px 0 34px;
+        }
+
+        .project-gallery figure {
+            margin: 0;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--s1);
+        }
+
+        .project-gallery img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: contain;
+            background: #08090c;
+        }
+
+        .project-gallery figcaption {
+            padding: 9px 12px;
+            color: var(--mut);
+            font: 10px var(--m);
+        }
+
+        .cs .todo {
+            line-height: 1.7;
+        }
+
         .pn {
             display: flex;
             justify-content: space-between;
@@ -741,7 +875,7 @@
 
     <nav aria-label="Primary">
         <a href="#top" class="on logo-link" aria-label="Youssif Waleed Home">
-            <img src="./2.png" alt="YW Logo" class="nav-logo">
+            <img src="./assets/2.png" alt="YW Logo" class="nav-logo">
         </a>
         <a href="#projects">Projects</a>
         <a href="#systems">Systems</a>
@@ -753,7 +887,8 @@
     </nav>
 
     <main id="main">
-        <section id="top"><img class="logo"
+        <section id="top">
+            <img class="logo"
                 src="data:image/png;base64,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"
                 alt="YW logo">
             <p class="k">00 — Arrival · Entering the YW universe</p>
@@ -772,23 +907,25 @@
             <div class="list" id="plist"></div>
         </section>
 
+
         <section id="systems">
             <p class="k">02 — Systems</p>
             <h2>Capability<br>map</h2>
 
             <div class="grid">
                 <div>
-                    <h3>Full-Stack &amp; Front-End</h3>
+                    <h3>Software Engineering &amp; Web Development</h3>
                     <ul>
                         <li>HTML · CSS · JavaScript</li>
                         <li>React · Next.js · TypeScript</li>
                         <li>Responsive Web Design</li>
                         <li>UI Development</li>
-                        <li>Three.js / WebGL</li>
+                        <li>Three.js · WebGL</li>
                     </ul>
                 </div>
+
                 <div>
-                    <h3>AI &amp; Machine Learning</h3>
+                    <h3>Artificial Intelligence &amp; Machine Learning</h3>
                     <ul>
                         <li>Python</li>
                         <li>scikit-learn</li>
@@ -797,42 +934,58 @@
                         <li>TensorFlow · Neural Networks</li>
                     </ul>
                 </div>
+
                 <div>
-                    <h3>Computer Vision</h3>
+                    <h3>Computer Vision &amp; Image Processing</h3>
                     <ul>
-                        <li>MediaPipe hand landmarks</li>
-                        <li>Feature extraction</li>
-                        <li>Image processing</li>
-                        <li>Image classification</li>
-                        <li>Fingerprint minutiae detection</li>
+                        <li>MediaPipe Hand Landmarks</li>
+                        <li>Feature Extraction</li>
+                        <li>Image Processing</li>
+                        <li>Image Classification</li>
+                        <li>Fingerprint Minutiae Detection</li>
                     </ul>
                 </div>
+
                 <div>
                     <h3>Data Science &amp; NLP</h3>
                     <ul>
                         <li>Pandas · NumPy</li>
-                        <li>Data preprocessing</li>
-                        <li>PCA · Feature selection</li>
-                        <li>Arabic text normalization</li>
+                        <li>Data Preprocessing</li>
+                        <li>PCA · Feature Selection</li>
+                        <li>Arabic Text Normalization</li>
                         <li>Buckwalter · BPE</li>
                     </ul>
                 </div>
+
                 <div>
-                    <h3>Algorithms &amp; Systems</h3>
+                    <h3>Robotics &amp; Intelligent Systems</h3>
+                    <ul>
+                        <li>Robotics-Oriented Engineering</li>
+                        <li>Intelligent Systems</li>
+                        <li>Neural Networks for AI Applications</li>
+                        <li>Computer Vision Applications</li>
+                        <li>Simulation &amp; System Modeling</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Algorithms &amp; Network Systems</h3>
                     <ul>
                         <li>Minimax · Alpha-Beta Pruning</li>
-                        <li>Game-tree search</li>
+                        <li>Game-Tree Search</li>
+                        <li>Algorithm Design</li>
                         <li>Cisco Packet Tracer</li>
-                        <li>Network simulation</li>
-                        <li>Robotics-oriented engineering</li>
+                        <li>Network Simulation</li>
                     </ul>
                 </div>
             </div>
-            <p class="cue" style="position:static;margin-top:16px">
-                Skills are represented through the projects and coursework listed in this portfolio.
-            </p>
 
+            <p class="cue" style="position:static;margin-top:16px">
+                Skills are demonstrated through the projects and coursework
+                presented in this portfolio.
+            </p>
         </section>
+
 
 
         <section id="about">
@@ -922,7 +1075,7 @@
             linkedin: "https://www.linkedin.com/in/youssif-waleed/",
 
             // CV PDF — place cv.pdf next to index.html
-            cv: "./cv.pdf",
+            cv: "./assets/cv.pdf",
 
             other: [],
 
@@ -934,6 +1087,7 @@
         const P = [
             {
                 id: "sign-language-recognition",
+                images: ["assets/Screenshot 2026-09-03 125820.webp", "assets/Screenshot 2026-09-03 125848.webp", "assets/Screenshot 2026-09-03 125905.webp", "assets/Screenshot 2026-09-03 125937.webp"],
                 t: "Sign Language Recognition",
                 tag: "Computer Vision · Machine Learning",
                 s: "Real-time sign-language classification using MediaPipe landmarks and an RBF SVM.",
@@ -950,13 +1104,14 @@
                     "MediaPipe hand landmarks",
                     "42-feature extraction",
                     "RBF SVM classifier",
-                    "Prediction smoothing"
+                    "Calibrated SVM prediction with confidence scores"
                 ],
                 stack: ["Python", "MediaPipe", "scikit-learn", "OpenCV"],
                 kind: "pipe"
             },
             {
                 id: "fingerprint-enhancement",
+                images: ["assets/ComputerVision.svg"],
                 t: "Fingerprint Enhancement",
                 tag: "Image Processing · Computer Vision",
                 s: "A fingerprint image-processing project focused on enhancement and minutiae detection.",
@@ -970,6 +1125,7 @@
             },
             {
                 id: "car-classification",
+                images: ["assets/DeepLearning.svg"],
                 t: "Car Image Classification",
                 tag: "Deep Learning · Computer Vision",
                 s: "Image classification experiments using a MobileNet-based model.",
@@ -982,103 +1138,68 @@
                 stack: ["Python", "TensorFlow", "MobileNet", "Computer Vision"],
                 kind: "none"
             },
-            {
-                id: "gomoku-ai",
-                t: "Gomoku AI",
-                tag: "Artificial Intelligence · Search",
-                s: "A 15×15 Gomoku game AI using adversarial search and pruning.",
-                facts: [
-                    "15 × 15 game board",
-                    "Minimax decision-making",
-                    "Alpha-Beta pruning",
-                    "Game-tree search"
-                ],
-                stack: ["Python", "Minimax", "Alpha-Beta Pruning"],
-                kind: "board"
-            },
-            {
-                id: "machine-learning-experiments",
-                t: "Machine Learning Experiments",
-                tag: "Applied Machine Learning",
-                s: "Comparative classification experiments across handwritten digits and customer data.",
-                facts: [
-                    "Pen-Digits classification",
-                    "Credit Customer classification",
-                    "Support Vector Machine",
-                    "K-Nearest Neighbors",
-                    "Decision Tree and Random Forest",
-                    "XGBoost"
-                ],
-                stack: ["Python", "scikit-learn", "XGBoost", "Pandas"],
-                kind: "none"
-            },
-            {
-                id: "fashion-mnist",
-                t: "Fashion-MNIST Classifier",
-                tag: "Deep Learning · TensorFlow",
-                s: "A neural-network experiment for fashion image classification.",
-                facts: [
-                    "Fashion-MNIST dataset",
-                    "Neural-network training and evaluation",
-                    "Dropout regularization",
-                    "Batch normalization"
-                ],
-                stack: ["Python", "TensorFlow", "Deep Learning"],
-                kind: "none"
-            },
-            {
-                id: "lenet-mnist",
-                t: "LeNet-5 on MNIST",
-                tag: "Neural Networks · Computer Vision",
-                s: "A convolutional neural-network implementation for handwritten digit recognition.",
-                facts: [
-                    "MNIST handwritten-digit dataset",
-                    "LeNet-5 architecture",
-                    "Recorded test accuracy: 98.36%"
-                ],
-                stack: ["Python", "TensorFlow", "CNN", "MNIST"],
-                kind: "none"
-            },
+
+
             {
                 id: "arabic-nlp",
-                t: "Arabic NLP Preprocessing",
-                tag: "Natural Language Processing",
-                s: "An Arabic text preprocessing pipeline evaluated on the SANAD news dataset.",
+                id: "arabic-nlp",
+                images: [
+                    "assets/arabic-nlp-loss.webp",
+                    "assets/arabic-nlp-confusion-matrices.webp",
+                    "assets/arabic-nlp-comparison.webp"
+                ],
+                t: "Arabic NLP: Preprocessing & Text Classification",
+                tag: "Natural Language Processing · Transformers",
+                s: "An Arabic NLP pipeline using the SANAD news dataset, combining text preprocessing, vocabulary and OOV analysis, BPE subword processing, and AraBERT-based text classification experiments.",
+
                 facts: [
-                    "45,500 Arabic articles",
-                    "16,800,366 raw tokens",
+                    "Dataset: 45,500 Arabic news documents across 7 categories",
+                    "Categories: Culture, Finance, Medical, Politics, Religion, Sports, Tech",
+                    "Raw token count: 16,800,366",
                     "Vocabulary reduced from 905,531 to 382,584",
                     "Vocabulary reduction: 57.75%",
                     "OOV rate reduced from 3.925005% to 1.353093%",
+                    "BPE: 500 merge operations",
                     "Buckwalter encoding and decoding round-trip test passed",
-                    "500 BPE merge operations"
+                    "Classification split: 36,400 training samples and 9,100 test samples",
+                    "Pretrained model: aubmindlab/bert-base-arabertv02",
+                    "Experiment 1: BERT + [CLS] — Test Accuracy: 98.8022%, Macro-F1: 98.8019%",
+                    "Experiment 2: BERT + Masked Mean Pooling — Test Accuracy: 98.7692%, Macro-F1: 98.7688%",
+                    "Training: 2 epochs per representation experiment",
+                    "Hardware: NVIDIA Tesla T4 GPU"
                 ],
+
                 pipe: [
-                    "SANAD dataset",
-                    "Text normalization",
-                    "Buckwalter conversion",
-                    "Vocabulary and OOV analysis",
-                    "BPE subword processing"
+                    "SANAD Arabic news dataset",
+                    "Text normalization and preprocessing",
+                    "Buckwalter encoding and decoding",
+                    "Vocabulary analysis and OOV evaluation",
+                    "BPE subword processing with 500 merge operations",
+                    "AraBERT v02 feature extraction",
+                    "[CLS] representation experiment",
+                    "Masked Mean Pooling experiment",
+                    "Test-set evaluation: Accuracy, Macro-F1, and Classification Reports"
                 ],
-                stack: ["Python", "Regex", "Arabic NLP", "Buckwalter", "BPE"],
+
+                stack: [
+                    "Python",
+                    "Google Colab",
+                    "PyTorch",
+                    "Hugging Face Transformers",
+                    "AraBERT",
+                    "Regex",
+                    "Buckwalter",
+                    "Byte Pair Encoding (BPE)",
+                    "scikit-learn",
+                    "Matplotlib"
+                ],
+
                 kind: "pipe"
             },
-            {
-                id: "data-analysis",
-                t: "Data Analysis & Feature Engineering",
-                tag: "Data Science · Analytics",
-                s: "Data preparation and feature-analysis workflows for machine-learning tasks.",
-                facts: [
-                    "Data preprocessing with Pandas and NumPy",
-                    "Principal Component Analysis",
-                    "Outlier detection",
-                    "Feature selection"
-                ],
-                stack: ["Python", "Pandas", "NumPy", "PCA"],
-                kind: "none"
-            },
+
             {
                 id: "packet-tracer",
+                images: ["assets/Network1.svg", "assets/Network2.webp"],
                 t: "Network Simulation",
                 tag: "Networking · Cisco Packet Tracer",
                 s: "Network simulation and configuration exercises in Cisco Packet Tracer.",
@@ -1091,61 +1212,8 @@
                 kind: "none"
             },
             {
-                id: "network-infrastructure",
-                t: "Network Infrastructure Design",
-                tag: "Networking · Systems",
-                s: "Network infrastructure planning with an emphasis on scalability, reliability and security.",
-                facts: [
-                    "Network architecture planning",
-                    "Scalability and reliability considerations",
-                    "Security and performance considerations"
-                ],
-                stack: ["Networking", "Network Design"],
-                kind: "none"
-            },
-            {
-                id: "sports-news",
-                t: "Sports News Website",
-                tag: "Web Development",
-                s: "A responsive, multilingual sports news experience with multiple pages and theme options.",
-                facts: [
-                    "Multi-page website",
-                    "Responsive layout",
-                    "Multilingual interface",
-                    "Theme customization"
-                ],
-                stack: ["HTML", "CSS", "JavaScript"],
-                kind: "none"
-            },
-            {
-                id: "shopzone",
-                t: "ShopZone",
-                tag: "E-Commerce · Web Development",
-                s: "A shopping website concept featuring product management and administrative workflows.",
-                facts: [
-                    "Shopping interface",
-                    "Product management",
-                    "Subscription-related features",
-                    "Admin panel"
-                ],
-                stack: ["HTML", "CSS", "JavaScript"],
-                kind: "none"
-            },
-            {
-                id: "fitcore-gym",
-                t: "FitCore Gym",
-                tag: "Web Development · UI",
-                s: "A responsive gym website designed to present membership plans and fitness services.",
-                facts: [
-                    "Responsive layout",
-                    "Membership plans",
-                    "Clean user interface"
-                ],
-                stack: ["HTML", "CSS", "JavaScript"],
-                kind: "none"
-            },
-            {
                 id: "dji-mavic",
+                images: ["assets/DJIMavic4Pro.svg"],
                 t: "DJI Mavic 4 Pro",
                 tag: "Landing Page · Animation",
                 s: "A product-focused landing page with animated visual elements.",
@@ -1159,6 +1227,7 @@
             },
             {
                 id: "ux-review",
+                images: ["assets/TheUXReview.svg"],
                 t: "The UX Review",
                 tag: "Web Development · UX",
                 s: "A platform concept for collecting and presenting user-experience feedback.",
@@ -1171,6 +1240,7 @@
             },
             {
                 id: "modabber",
+                images: ["assets/مدبّر.svg"],
                 t: "مدبّر — Smart Finance Manager",
                 tag: "Web Application · Finance",
                 s: "A personal-finance application concept for tracking expenses and managing budgets.",
@@ -1184,6 +1254,7 @@
             },
             {
                 id: "gamearena",
+                images: ["assets/GameArena.svg"],
                 t: "GameArena",
                 tag: "Web Development · Gaming",
                 s: "An interactive gaming platform concept with dynamic content and game categories.",
@@ -1196,19 +1267,8 @@
                 kind: "none"
             },
             {
-                id: "whats-for-dinner",
-                t: "What's For Dinner",
-                tag: "Web Application",
-                s: "A meal-discovery concept that suggests food options based on user input.",
-                facts: [
-                    "User-input-based suggestions",
-                    "Meal discovery interface"
-                ],
-                stack: ["HTML", "CSS", "JavaScript"],
-                kind: "none"
-            },
-            {
                 id: "contacthub",
+                images: ["assets/ContactHub.svg"],
                 t: "ContactHub",
                 tag: "Web Application · JavaScript",
                 s: "A contact-management application with search and browser-based persistence.",
@@ -1220,22 +1280,17 @@
                 stack: ["HTML", "CSS", "JavaScript", "Local Storage"],
                 kind: "none"
             },
-            {
-                id: "cosmos",
-                t: "COSMOS",
-                tag: "Web Development · Space",
-                s: "A space-themed dashboard interface.",
-                facts: [
-                    "Space dashboard concept",
-                    "Thematic interface design"
-                ],
-                stack: ["HTML", "CSS", "JavaScript"],
-                kind: "none"
-            }
         ];
 
         const $ = s => document.querySelector(s);
-        $('#plist').innerHTML = P.map((p, i) => `<a class="row" href="#/p/${p.id}"><span class="n">0${i + 1}</span><b>${p.t}</b><em>${p.tag}</em><p>${p.s}</p></a>`).join('');
+        $('#plist').innerHTML = P.map((p, i) => {
+            const cover = (p.images && p.images[0]) || '';
+            const alt = `${p.t} project preview`;
+            return `<a class="row" href="#/p/${p.id}" aria-label="Open case study: ${p.t}">
+                <span class="cover">${cover ? `<img src="${cover}" alt="${alt}" loading="lazy">` : ''}<span class="n">${String(i + 1).padStart(2, '0')}</span></span>
+                <span class="meta"><b>${p.t}</b><em>${p.tag}</em><p>${p.s}</p><span class="open-project">OPEN CASE STUDY ↗</span></span>
+            </a>`;
+        }).join('');
 
 
         const L = [
@@ -1295,9 +1350,10 @@
                 pr = P[(i - 1 + P.length) % P.length];
             c.innerHTML = `<p class="k">Case study ${String(i + 1).padStart(2, '0')}/${String(P.length).padStart(2, '0')} · ${p.tag}</p><h2>${p.t}</h2><p class="intro">${p.s}</p>
 ${p.kind === 'pipe' ? `<p class="k">Pipeline (system diagram)</p><div class="pipe">${p.pipe.map((x, j) => `<div data-i="0${j + 1}">${x}</div>`).join('')}</div>` : p.kind === 'board' ? board() : ''}
+${p.images && p.images.length > 1 ? `<div class="project-gallery" aria-label="${p.t} screenshots">${p.images.map((src, j) => `<figure><img src="${src}" alt="${p.t} screenshot ${j + 1}" loading="lazy"><figcaption>SCREEN ${String(j + 1).padStart(2, '0')}</figcaption></figure>`).join('')}</div>` : ''}
 <div class="cs"><div><h3>Verified details</h3><ul>${p.facts.map(f => `<li>— ${f}</li>`).join('')}</ul></div>
 <div><h3>Technologies</h3><ul>${p.stack.map(f => `<li>— ${f}</li>`).join('')}</ul></div>
-<div><h3>Pending from repository</h3><p class="todo">Problem &amp; objectives · role · constraints · decisions · results · screenshots · lessons. Not invented — add when verified.</p></div></div>
+<div><h3>Project notes</h3><p class="todo">Only documented details are listed here. Repository links, implementation decisions, and additional results can be added when verified.</p></div></div>
 <div class="pn"><a class="btn g" href="#/p/${pr.id}" style="margin:0">← ${pr.t}</a><a class="btn" href="#projects">All projects</a><a class="btn g" href="#/p/${n.id}" style="margin:0">${n.t} →</a></div>`;
             c.className = 'open'; c.scrollTop = 0; document.body.style.overflow = 'hidden'; c.querySelector('h2').tabIndex = -1; c.querySelector('h2').focus()
         }
